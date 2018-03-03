@@ -1,16 +1,17 @@
+import re
 from collections import deque
 
+import Common
+import VariablesManager
 from Brackets.OpenBracket import OpenBracket
+from Common import *
 from Operands.Operand import Operand
 from Operators.Division import Division
 from Operators.Minus import Minus
 from Operators.Multiply import Multiply
 from Operators.Plus import Plus
 from Operators.Power import Power
-
-
-def is_operator(element):
-    return element in "+-*/^"
+from VariablesManager import VariablesManager
 
 
 def create_operator(element):
@@ -23,27 +24,32 @@ def create_operator(element):
     }
     return operators_creators[element]
 
+def split_elements(infix):
+    # Remove spaces
+    infix=infix.replace(" ", "")
 
-def is_number(element):
-    return element.isdigit()
+    splitted = re.split(r'(\+|\-|\*|\/|\(|\)|\^)', infix)
+
+    # Remove emptys
+    splitted = filter(None, splitted)
+
+    return splitted
 
 
-def is_open_bracket(element):
-    return element == "("
-
-
-def is_close_bracket(element):
-    return element == ")"
-
-
-def convert_infix(infix):
+def convert_infix(infix, vars):
     stack = []
     queue = deque()
 
-    for element in infix:
+    splitted = split_elements(infix)
+    for element in splitted:
 
         if is_number(element):
             queue.append(Operand(element))
+            continue
+
+        if vars.is_variable(element):
+            operand = vars.get_var_val(element)
+            queue.append(operand)
             continue
 
         if is_operator(element):
@@ -51,8 +57,10 @@ def convert_infix(infix):
             if len(stack):
                 top = stack[-1]
 
-                while (is_operator(top.symbol) and top.precedence > operator.precedence) or (
-                        is_operator(top.symbol) and top.precedence == operator.precedence and operator.associative == 'L') and (top.symbol != ')'):
+                while (is_operator(top) and top.precedence > operator.precedence) or (
+                                is_operator(
+                                    top) and top.precedence == operator.precedence and operator.associative == 'L') and (
+                            top.symbol != ')'):
                     queue.append(stack.pop())
                     if not stack:
                         break
@@ -69,6 +77,8 @@ def convert_infix(infix):
             while stack[-1].symbol != '(':
                 queue.append(stack.pop())
             stack.pop()
+
+
 
     while stack:
         queue.append(stack.pop())
