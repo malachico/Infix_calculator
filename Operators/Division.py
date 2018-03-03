@@ -1,3 +1,4 @@
+from Operands.Operand import Operand
 from Operator import Operator
 
 class Division(Operator):
@@ -8,4 +9,4 @@ class Division(Operator):
         self.associative = 'L'
 
     def evaluate(self, a, b):
-        return a / b
+        return b / a

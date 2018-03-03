@@ -1,3 +1,4 @@
+from Operands.Operand import Operand
 from Operator import Operator
 
 
@@ -9,4 +10,4 @@ class Power(Operator):
         self.associative = 'R'
 
     def evaluate(self, a, b):
-        return a ^ b
+        return b ** a

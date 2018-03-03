@@ -1,3 +1,4 @@
+from Operands.Operand import Operand
 from Operator import Operator
 
 class Minus(Operator):
@@ -8,4 +9,4 @@ class Minus(Operator):
         self.associative = 'L'
 
     def evaluate(self, a, b):
-        return a - b
+        return b - a
