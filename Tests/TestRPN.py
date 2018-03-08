@@ -11,16 +11,16 @@ from Operators.Power import Power
 
 class TestRPN(unittest.TestCase):
     def testsimple(self):
-        c= Calculator()
+        c = Calculator()
 
-        self.assertEqual(InfixToRPN.convert_infix("", c.v_manager),  [])
-        self.assertEqual(InfixToRPN.convert_infix("1+2",c.v_manager), [1, 2, Plus()])
+        self.assertEqual(InfixToRPN.convert_infix("", c.v_manager), [])
+        self.assertEqual(InfixToRPN.convert_infix("1+2", c.v_manager), [1, 2, Plus()])
 
         self.assertEqual(
             InfixToRPN.convert_infix("3 +4*2/ (1-5)^2^3", c.v_manager),
             [3, 4, 2, Multiply(), 1, 5, Minus(), 2, 3, Power(), Power(), Division(), Plus()])
 
-        self.assertEqual(InfixToRPN.convert_infix("10 /2",c.v_manager), [10, 2, Division()])
+        self.assertEqual(InfixToRPN.convert_infix("10 /2", c.v_manager), [10, 2, Division()])
 
     def test_split(self):
         self.assertEqual(InfixToRPN.split_elements(""), [])

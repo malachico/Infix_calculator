@@ -11,7 +11,6 @@ class TestCompiler(unittest.TestCase):
         self.assertEqual(Compiler.compile("i/=1"), ['i=i/(1)'])
         self.assertEqual(Compiler.compile("i^=1"), ['i=i^(1)'])
 
-
     def test1(self):
         self.assertEqual(Compiler.compile(""), [''])
         self.assertEqual(Compiler.compile("i=1+2"), ['i=1+2'])

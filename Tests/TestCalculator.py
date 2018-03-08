@@ -22,6 +22,3 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(c.calc("10/2+3"), 8)
         self.assertEqual(c.calc("10/(2+3)"), 2)
         self.assertEqual(c.calc("7-(1+1)"), 5)
-
-
-
