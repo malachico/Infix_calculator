@@ -11,7 +11,7 @@ def calc_expression(exp, v_manager, stack):
 
     if v_manager.is_variable(current):
         stack.append(current)
-        return calc_expression(exp,v_manager, stack)
+        return calc_expression(exp, v_manager, stack)
 
     if is_number(current):
         stack.append(current)
@@ -23,5 +23,3 @@ def calc_expression(exp, v_manager, stack):
         result = current.evaluate(operand1, operand2)
         stack.append(result)
         return calc_expression(exp, v_manager, stack)
-
-

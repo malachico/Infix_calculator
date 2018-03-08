@@ -1,4 +1,3 @@
-import Common
 import InfixToRPN
 import RPNCalculator
 from VariablesManager import VariablesManager

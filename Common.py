@@ -11,10 +11,10 @@ def is_number(element):
     except:
         return element.isdigit()
 
+
 def is_open_bracket(element):
     return element == "("
 
 
 def is_close_bracket(element):
     return element == ")"
-

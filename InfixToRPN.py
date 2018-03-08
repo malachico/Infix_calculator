@@ -1,8 +1,6 @@
 import re
 from collections import deque
 
-import Common
-import VariablesManager
 from Brackets.OpenBracket import OpenBracket
 from Common import *
 from Operands.Operand import Operand
@@ -11,7 +9,6 @@ from Operators.Minus import Minus
 from Operators.Multiply import Multiply
 from Operators.Plus import Plus
 from Operators.Power import Power
-from VariablesManager import VariablesManager
 
 
 def create_operator(element):
@@ -24,9 +21,10 @@ def create_operator(element):
     }
     return operators_creators[element]
 
+
 def split_elements(infix):
     # Remove spaces
-    infix=infix.replace(" ", "")
+    infix = infix.replace(" ", "")
 
     splitted = re.split(r'(\+|\-|\*|\/|\(|\)|\^)', infix)
 
@@ -77,8 +75,6 @@ def convert_infix(infix, vars):
             while stack[-1].symbol != '(':
                 queue.append(stack.pop())
             stack.pop()
-
-
 
     while stack:
         queue.append(stack.pop())

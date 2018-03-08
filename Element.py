@@ -1,9 +1,6 @@
-from abc import abstractproperty, ABCMeta
-
-
-class Element():
+class Element:
     def __init__(self):
-        self.symbol =""
+        self.symbol = ""
 
     def __str__(self):
         return self.symbol

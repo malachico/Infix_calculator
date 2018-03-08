@@ -1,5 +1,5 @@
-from collections import namedtuple
 from operator import attrgetter
+
 
 class Expression:
     def __init__(self, expression, precedence=0):
@@ -51,10 +51,9 @@ def handle_plus_eq(exp):
     ops = "+-*/^"
 
     for op in ops:
-        if op+"=" in exp:
-            splitted = exp.split(op+"=")
-            exp = splitted[0] + "=" + splitted[0] + op + "(" + splitted[1]+")"
-
+        if op + "=" in exp:
+            splitted = exp.split(op + "=")
+            exp = splitted[0] + "=" + splitted[0] + op + "(" + splitted[1] + ")"
 
     return exp
 
