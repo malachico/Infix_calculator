@@ -2,12 +2,20 @@ from operator import attrgetter
 
 
 class Expression:
+    """
+    class represent expression
+    has an expression and precedence of evaluation
+    """
+
     def __init__(self, expression, precedence=0):
         self.expression = expression
         self.precedence = precedence
 
 
 def handle_inc(exp):
+    """
+    compile expressions with ++ symbol
+    """
     exps = []
     if "++" in exp:
         elements = exp.split(" ")
@@ -28,6 +36,9 @@ def handle_inc(exp):
 
 
 def handle_sub(exp):
+    """
+    compile expressions with -- symbol
+    """
     exps = []
     if "--" in exp:
         elements = exp.split(" ")
@@ -48,6 +59,9 @@ def handle_sub(exp):
 
 
 def handle_plus_eq(exp):
+    """
+    compile expressions with += /= -= etc. symbol
+    """
     ops = "+-*/^"
 
     for op in ops:
@@ -74,7 +88,7 @@ def compile(exp):
         e.expression = e.expression.replace("++", "")
         e.expression = e.expression.replace("--", "")
 
-    # sort by precedence
+    # sort by precedence of evaluation
     exps = sorted(exps, key=attrgetter('precedence'))
 
     return map(lambda e: e.expression, exps)

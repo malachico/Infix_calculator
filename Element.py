@@ -1,3 +1,9 @@
+"""
+an abstract class represent an element in the calculator.
+such as brackets, numbers, operators and operands
+"""
+
+
 class Element:
     def __init__(self):
         self.symbol = ""
