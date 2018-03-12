@@ -6,7 +6,7 @@ from Calculator import Calculator
 
 class TestVariables(unittest.TestCase):
     def TestAssign(self):
-        c= Calculator()
+        c = Calculator()
 
         Main.calc_exp("i=1", c)
         self.assertTrue(c.v_manager.is_variable("i"))
@@ -17,7 +17,7 @@ class TestVariables(unittest.TestCase):
         self.assertEqual(c.v_manager.get_var_val("i"), 2)
 
     def test_inc(self):
-        c= Calculator()
+        c = Calculator()
 
         Main.calc_exp("j=1", c)
         Main.calc_exp("j++", c)
@@ -41,7 +41,6 @@ class TestVariables(unittest.TestCase):
         Main.calc_exp("--j", c)
 
         self.assertEqual(c.v_manager.get_var_val("j"), -1)
-
 
     def test_multiple_vars(self):
         c = Calculator()

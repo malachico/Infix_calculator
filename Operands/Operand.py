@@ -17,14 +17,13 @@ class Operand(Element):
         return Operand(self.value + other.value)
 
     def __sub__(self, other):
-            return Operand(self.value - other.value)
+        return Operand(self.value - other.value)
 
     def __div__(self, other):
-            return Operand(self.value / other.value)
+        return Operand(self.value / other.value)
 
     def __mul__(self, other):
-            return Operand(self.value * other.value)
+        return Operand(self.value * other.value)
 
     def __pow__(self, power, modulo=None):
-            return Operand(self.value ** power.value)
-
+        return Operand(self.value ** power.value)

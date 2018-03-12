@@ -25,8 +25,10 @@ if __name__ == '__main__':
 
     print "Welcome to the coolest calculator CLI!"
 
+    # Print options
     print_options()
 
+    # While not quit
     while True:
         exp = raw_input("insert a series : ")
         if exp == "status":

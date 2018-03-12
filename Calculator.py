@@ -4,6 +4,12 @@ from VariablesManager import VariablesManager
 
 
 class Calculator:
+    """
+    Calculator object, has the ability to calc expressions,
+    maintain a set of variables
+    and return their status
+    """
+
     def __init__(self):
         self.v_manager = VariablesManager()
 
